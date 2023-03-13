@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.utils.http import urlencode
 from django.views import View
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 from e_shop.models import *
 
 from e_shop.forms import *
@@ -52,22 +52,13 @@ class ProductDetailView(DetailView):
     model = Product
 
 
-def product_add_view(request):
-    if not request.POST:
-        form = ProductForm()
-        context = {
-            'form': form
-        }
-        return render(request, 'product_add_page.html', context=context)
-    form = ProductForm(data=request.POST)
-    if not form.is_valid():
-        context = {
-            'form': form
-        }
-        return render(request, 'product_add_page.html', context=context)
-    else:
-        product = Product.objects.create(**form.cleaned_data)
-        return redirect('product_detail', pk=product.pk)
+class ProductAddView(CreateView):
+    template_name = 'product_add_page.html'
+    model = Product
+    form_class = ProductForm
+
+    def get_success_url(self):
+        return reverse('product_detail', kwargs={'pk': self.object.pk})
 
 
 def product_update_view(request, pk):

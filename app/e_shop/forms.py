@@ -19,7 +19,7 @@ class ProductForm(forms.ModelForm):
 
     class Meta:
         model = Product
-        fields = ("product_name", "product_description", "product_image", "category")
+        fields = ("product_name", "product_description", "product_image", "category", 'price', 'the_rest_of_the_goods')
         labels = {
             'product_name': 'Название продукта',
             'product_description': 'Описание',
