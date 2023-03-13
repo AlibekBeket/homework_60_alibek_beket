@@ -13,6 +13,11 @@
 <div class="product_info">
     <img src="{{ product.product_image }}" alt="{{ product.product_name }} image">
     <div class="product_str">
+        <div class="button_basket">
+            <form action="#" method="post">
+                <input type="submit" value="add to cart">
+            </form>
+        </div>
         <p><a href="{% url 'product_detail' product.pk %}">{{ product.product_name }}</a></p>
         <div class="product_info_small_font">
             <p>{{ product.price }} tg</p>
