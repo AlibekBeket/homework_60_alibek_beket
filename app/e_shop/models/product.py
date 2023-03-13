@@ -3,8 +3,6 @@ from django.db import models
 from django.db.models import TextChoices
 
 
-# Create your models here.
-
 class ProductCategoryChoice(TextChoices):
     OTHER = 'other', 'Разное'
     FOOD = 'food', 'Еда'
