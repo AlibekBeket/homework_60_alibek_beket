@@ -25,14 +25,13 @@
 <h3 class="delete_text">Are you sure you want to delete the product?</h3>
 <div class="delete_form_block">
     <div class="form_yes">
-        <form action="{% url 'product_confirm_delete' product.pk %}" method="post">
+        <form action="{% url 'product_delete' product.pk %}" method="post">
             {% csrf_token %}
             <input type="submit" value="Yes">
         </form>
     </div>
     <div class="form_no">
-        <form action="{% url 'products_list' %}" method="post">
-            {% csrf_token %}
+        <form action="{% url 'products_list' %}" method="get">
             <input type="submit" value="No">
         </form>
     </div>

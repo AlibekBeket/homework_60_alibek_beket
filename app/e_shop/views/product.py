@@ -1,9 +1,9 @@
 from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.utils.http import urlencode
 from django.views import View
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from e_shop.models import *
 
 from e_shop.forms import *
@@ -70,13 +70,8 @@ class ProductUpdateView(UpdateView):
         return reverse('product_detail', kwargs={'pk': self.object.pk})
 
 
-def product_delete_view(request, pk):
-    product = get_object_or_404(Product, pk=pk)
-    return render(request, 'product_confirm_delete.html', context={'product': product})
-
-
-def product_confirm_delete_view(request, pk):
-    product = get_object_or_404(Product, pk=pk)
-    product.delete()
-    return redirect('products_list')
+class ProductDeleteView(DeleteView):
+    template_name = 'product_confirm_delete.html'
+    model = Product
+    success_url = reverse_lazy('products_list')
 
