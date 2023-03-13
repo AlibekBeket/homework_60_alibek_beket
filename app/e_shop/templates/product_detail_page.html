@@ -23,7 +23,8 @@
     </div>
 </div>
 <div class="detail_button_basket">
-    <form action="#" method="post">
+    <form action="{% url 'product_cart_add' product.pk %}" method="post">
+        {% csrf_token %}
         <input type="submit" value="add to cart">
     </form>
 </div>

@@ -1,14 +1,9 @@
 from django.db.models import Q
-from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.utils.http import urlencode
-from django.views import View
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from e_shop.models import *
-
 from e_shop.forms import *
-
-from e_shop.forms import SearchForm
 
 
 class ProductView(ListView):
@@ -74,4 +69,3 @@ class ProductDeleteView(DeleteView):
     template_name = 'product_confirm_delete.html'
     model = Product
     success_url = reverse_lazy('products_list')
-
