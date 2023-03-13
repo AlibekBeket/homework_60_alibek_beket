@@ -5,7 +5,7 @@ from e_shop.views.product import *
 urlpatterns = [
     path('', ProductView.as_view(), name='products_list'),
     path('product/', ProductView.as_view(), name='products_list'),
-    path('product/<int:pk>/', product_detail_view, name='product_detail'),
+    path('product/<int:pk>/', ProductDetailView.as_view(), name='product_detail'),
     path('product/add/', product_add_view, name='product_add'),
     path('product/<int:pk>/update', product_update_view, name='product_update'),
     path('product/<int:pk>/delete', product_delete_view, name='product_delete'),

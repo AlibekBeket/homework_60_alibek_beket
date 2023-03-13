@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.utils.http import urlencode
 from django.views import View
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from e_shop.models import *
 
 from e_shop.forms import *
@@ -47,16 +47,9 @@ class ProductView(ListView):
         return context
 
 
-def product_detail_view(request, pk):
-    product_info = get_object_or_404(Product, pk=pk)
-    product_category = ProductCategoryChoice.choices
-    for category in product_category:
-        if product_info.category == category[0]:
-            product_info.category = category[1]
-    context = {
-        'product': product_info
-    }
-    return render(request, 'product_detail_page.html', context=context)
+class ProductDetailView(DetailView):
+    template_name = 'product_detail_page.html'
+    model = Product
 
 
 def product_add_view(request):
