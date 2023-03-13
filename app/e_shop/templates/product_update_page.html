@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Update Product{% endblock %}
+{% block navbar_logo %}
+<a href="{% url 'products_list' %}">E-Shop</a>
+{% endblock %}
+{% block navbar %}
+<a href="{% url 'products_list' %}">Product List</a>
+<a href="{% url 'product_add' %}">Add Product</a>
+<a href="{% url 'product_delete' product.pk %}">Delete Product</a>
+{% endblock %}
+{% block content %}
+<h1>Update Product</h1>
+<div class="form">
+    <form action="{% url 'product_update' product.pk %}" method="post">
+        {% include 'partials/product_form.html' with button_text="Update" %}
+    </form>
+</div>
+{% endblock %}

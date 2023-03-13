@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Create Product{% endblock %}
+{% block navbar_logo %}
+<a href="{% url 'products_list' %}">E-Shop</a>
+{% endblock %}
+{% block navbar %}
+<a href="{% url 'products_list' %}">Product List</a>
+{% endblock %}
+{% block content %}
+<h1>Add Product</h1>
+<div class="form">
+    <form action="{% url 'product_add' %}" method="post">
+        {% include 'partials/product_form.html' with button_text="Create" %}
+    </form>
+</div>
+{% endblock %}

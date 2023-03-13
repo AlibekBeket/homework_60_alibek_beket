@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Products Detail{% endblock %}
+{% block navbar_logo %}
+<a href="{% url 'products_list' %}">E-Shop</a>
+{% endblock %}
+{% block navbar %}
+<a href="{% url 'products_list' %}">Product List</a>
+<a href="{% url 'product_add' %}">Add Product</a>
+<a href="{% url 'product_update' product.pk %}">Update Product</a>
+<a href="{% url 'product_delete' product.pk %}">Delete Product</a>
+{% endblock %}
+{% block content %}
+<div class="product_detail_info">
+    <div class="product_image">
+        <img src="{{ product.product_image }}" alt="{{ product.product_name }} image">
+    </div>
+    <div class="product_detail_str">
+        <p>Product name: <span>{{ product.product_name }}</span></p>
+        <p>Description: <span>{{ product.product_description }}</span></p>
+        <p>Category: <span>{{ product.category }}</span></p>
+        <p>The rest of the goods: <span>{{ product.the_rest_of_the_goods }}</span></p>
+        <p>Price: <span>{{ product.price }} tg</span></p>
+    </div>
+</div>
+{% endblock %}

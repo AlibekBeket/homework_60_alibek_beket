@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Products List{% endblock %}
+{% block navbar_logo %}
+<a href="{% url 'products_list' %}">E-Shop</a>
+{% endblock %}
+{% block navbar %}
+<a href="{% url 'products_list' %}">Product List</a>
+<a href="{% url 'product_add' %}">Add Product</a>
+{% endblock %}
+{% block content %}
+{% include 'partials/product_find.html' %}
+{% for product in products_list %}
+<div class="product_info">
+    <img src="{{ product.product_image }}" alt="{{ product.product_name }} image">
+    <div class="product_str">
+        <p><a href="{% url 'product_detail' product.pk %}">{{ product.product_name }}</a></p>
+        <div class="product_info_small_font">
+            <p>{{ product.price }} tg</p>
+            <p>{{ product.category }}</p>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% if is_paginated %}
+{% include 'partials/pagination.html' %}
+{% endif %}
+{% endblock %}
