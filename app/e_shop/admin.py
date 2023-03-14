@@ -42,10 +42,10 @@ admin.site.register(Booking, BookingAdmin)
 
 
 class CountAdmin(admin.ModelAdmin):
-    list_display = ("id", "product_pk", "booking_pk")
-    list_filter = ("id", "product_pk", "booking_pk")
-    search_fields = ("id", "product_pk", "booking_pk")
-    fields = ("product_pk", "booking_pk")
+    list_display = ("id", "product_pk", "booking_pk", "count")
+    list_filter = ("id", "product_pk", "booking_pk", "count")
+    search_fields = ("id", "product_pk", "booking_pk", "count")
+    fields = ("product_pk", "booking_pk", "count")
     readonly_fields = ("id",)
 
 

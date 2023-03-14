@@ -30,7 +30,7 @@
     <p>Total Price: {{ total_price }} tg</p>
 </div>
 <div class="form">
-    <form action="#" method="post">
+    <form action="{% url 'booking_add' %}" method="post">
         {% include 'partials/booking_form.html' %}
     </form>
 </div>

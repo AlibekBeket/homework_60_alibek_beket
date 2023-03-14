@@ -4,7 +4,7 @@ from django.views import View
 from django.views.generic import DetailView, CreateView, TemplateView, ListView, DeleteView
 from django.views.generic.edit import FormMixin
 
-from e_shop.models import ItemInCart, Product
+from e_shop.models import ItemInCart, Product, Booking, Count
 
 from e_shop.forms import BookingForm
 
@@ -48,3 +48,21 @@ class ProductCartView(ListView, FormMixin):
 class ProductCartDeleteView(DeleteView):
     model = ItemInCart
     success_url = reverse_lazy('product_cart_list')
+
+
+class BookingAddView(TemplateView):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = BookingForm()
+        return context
+
+    def post(self, request, *args, **kwargs):
+        form = BookingForm(request.POST)
+        if not form.is_valid():
+            redirect('product_cart_list')
+        booking = form.save()
+        product_in_cart = ItemInCart.objects.all()
+        for product in product_in_cart:
+            booking_many_to_many = Count(product_pk=product.product_pk, booking_pk=booking, count=product.count)
+            booking_many_to_many.save()
+        return redirect('products_list')
