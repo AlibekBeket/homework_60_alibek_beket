@@ -2,8 +2,11 @@ from django.shortcuts import redirect
 from django.urls import reverse, reverse_lazy
 from django.views import View
 from django.views.generic import DetailView, CreateView, TemplateView, ListView, DeleteView
+from django.views.generic.edit import FormMixin
 
 from e_shop.models import ItemInCart, Product
+
+from e_shop.forms import BookingForm
 
 
 class ProductCartAddView(TemplateView):
@@ -25,10 +28,11 @@ class ProductCartAddView(TemplateView):
         return redirect('products_list')
 
 
-class ProductCartView(ListView):
+class ProductCartView(ListView, FormMixin):
     template_name = 'product_cart_page.html'
     model = ItemInCart
     context_object_name = 'products_list'
+    form_class = BookingForm
 
     def get_context_data(self, *, object_list=None, **kwargs):
         products = ItemInCart.objects.all()

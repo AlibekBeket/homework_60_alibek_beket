@@ -10,19 +10,19 @@ class Booking(models.Model):
         blank=True,
         through='Count'
     )
-    user_name = models.IntegerField(
+    user_name = models.CharField(
         max_length=100,
         null=False,
         blank=False,
         verbose_name="Имя пользователя"
     )
-    phone_number = models.IntegerField(
+    phone_number = models.CharField(
         max_length=12,
         null=False,
         blank=False,
         verbose_name="Телефон"
     )
-    address = models.IntegerField(
+    address = models.CharField(
         max_length=12,
         null=False,
         blank=False,

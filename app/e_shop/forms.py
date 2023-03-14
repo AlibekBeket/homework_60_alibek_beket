@@ -1,7 +1,7 @@
 from django import forms
 from django.core.exceptions import ValidationError
 
-from e_shop.models import Product
+from e_shop.models import Product, Booking
 
 
 class ProductForm(forms.ModelForm):
@@ -46,3 +46,14 @@ class SearchForm(forms.Form):
         required=False,
         label='Найти'
     )
+
+
+class BookingForm(forms.ModelForm):
+    class Meta:
+        model = Booking
+        fields = ("user_name", "address", "phone_number")
+        labels = {
+            'user_name': 'Имя',
+            'address': 'Адрес',
+            'phone_number': 'Телефон',
+        }
