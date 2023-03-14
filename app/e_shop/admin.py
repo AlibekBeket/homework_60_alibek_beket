@@ -30,11 +30,12 @@ admin.site.register(ItemInCart, ItemInCartAdmin)
 
 
 class BookingAdmin(admin.ModelAdmin):
-    list_display = ("id", "user_name", "phone_number", "address", "created_at")
+    list_display = ("id", "user_name", "phone_number", "created_at")
     list_filter = ("id", "product_pk", "user_name", "phone_number", "address", "created_at")
     search_fields = ("id", "user_name", "product_pk", "address", "phone_number")
     fields = ("user_name", "phone_number", "address", "created_at")
     readonly_fields = ("id", "created_at")
+    ordering = ('created_at',)
 
 
 admin.site.register(Booking, BookingAdmin)
