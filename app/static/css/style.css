@@ -88,6 +88,27 @@ body{
     background: DarkSlateGray;
     color: White;
 }
+.button_basket_delete form input{
+    padding: 2px 20px;
+    position: absolute;
+    margin-left: 1025px;
+    border-radius: 5px;
+    background: Crimson;
+    color: white;
+}
+.button_basket_delete form input:hover{
+    background: Maroon;
+    color: White;
+}
+.total_price{
+    margin-top: 30px;
+    background-color: #755A57;
+    padding: 5px 0;
+    border-radius: 10px;
+}
+.total_price p{
+    margin-left: 10px;
+}
 .product_info_small_font{
     font-size: 20px;
     vertical-align: bottom;

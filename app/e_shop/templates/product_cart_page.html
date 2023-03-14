@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}Product Cart List{% endblock %}
+{% block navbar_logo %}
+<a href="{% url 'products_list' %}">E-Shop</a>
+{% endblock %}
+{% block navbar %}
+<a href="{% url 'products_list' %}">Product List</a>
+{% endblock %}
+{% block content %}
+<h1>Product Cart</h1>
+{% for product in products_list %}
+<div class="product_info">
+    <div class="product_str">
+        <div class="button_basket_delete">
+            <form action="#" method="post">
+                {% csrf_token %}
+                <input type="submit" value="remove from cart">
+            </form>
+        </div>
+        <p><a href="{% url 'product_detail' product.pk %}">{{ product.product_pk.product_name }}</a></p>
+        <div class="product_info_small_font">
+            <p>Price: {{ product.product_pk.price }} tg</p>
+            <p>Count: {{ product.count }}</p>
+            <p>Sum: {{ product.sum }} tg</p>
+        </div>
+    </div>
+</div>
+{% endfor %}
+<div class="total_price">
+    <p>Total Price: {{ total_price }} tg</p>
+</div>
+{% endblock %}

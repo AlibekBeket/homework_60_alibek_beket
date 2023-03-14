@@ -6,6 +6,7 @@
 {% block navbar %}
 <a href="{% url 'products_list' %}">Product List</a>
 <a href="{% url 'product_add' %}">Add Product</a>
+<a href="{% url 'product_cart_list' %}">Shopping Cart</a>
 {% endblock %}
 {% block content %}
 {% include 'partials/product_find.html' %}
