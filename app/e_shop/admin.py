@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from e_shop.models import Product, ItemInCart
+from e_shop.models import Product, ItemInCart, Booking, Count
 
 
 # Register your models here.
@@ -27,3 +27,25 @@ class ItemInCartAdmin(admin.ModelAdmin):
 
 
 admin.site.register(ItemInCart, ItemInCartAdmin)
+
+
+class BookingAdmin(admin.ModelAdmin):
+    list_display = ("id", "user_name", "phone_number", "address", "created_at")
+    list_filter = ("id", "product_pk", "user_name", "phone_number", "address", "created_at")
+    search_fields = ("id", "user_name", "product_pk", "address", "phone_number")
+    fields = ("user_name", "phone_number", "address", "created_at")
+    readonly_fields = ("id", "created_at")
+
+
+admin.site.register(Booking, BookingAdmin)
+
+
+class CountAdmin(admin.ModelAdmin):
+    list_display = ("id", "product_pk", "booking_pk")
+    list_filter = ("id", "product_pk", "booking_pk")
+    search_fields = ("id", "product_pk", "booking_pk")
+    fields = ("product_pk", "booking_pk")
+    readonly_fields = ("id",)
+
+
+admin.site.register(Count, CountAdmin)

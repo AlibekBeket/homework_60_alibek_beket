@@ -13,7 +13,7 @@ class ItemInCart(models.Model):
         null=False,
         blank=False,
         validators=[MinValueValidator(1)],
-        verbose_name="Остаток"
+        verbose_name="Количество"
     )
 
 
