@@ -1,7 +1,7 @@
 from django.shortcuts import redirect
 from django.urls import reverse, reverse_lazy
 from django.views import View
-from django.views.generic import DetailView, CreateView, TemplateView, ListView
+from django.views.generic import DetailView, CreateView, TemplateView, ListView, DeleteView
 
 from e_shop.models import ItemInCart, Product
 
@@ -24,6 +24,7 @@ class ProductCartAddView(TemplateView):
         product.save()
         return redirect('products_list')
 
+
 class ProductCartView(ListView):
     template_name = 'product_cart_page.html'
     model = ItemInCart
@@ -38,3 +39,8 @@ class ProductCartView(ListView):
         context = super().get_context_data(object_list=products, **kwargs)
         context['total_price'] = total_price
         return context
+
+
+class ProductCartDeleteView(DeleteView):
+    model = ItemInCart
+    success_url = reverse_lazy('product_cart_list')

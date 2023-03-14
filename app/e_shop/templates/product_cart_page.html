@@ -12,12 +12,12 @@
 <div class="product_info">
     <div class="product_str">
         <div class="button_basket_delete">
-            <form action="#" method="post">
+            <form action="{% url 'product_cart_delete' product.pk %}" method="post">
                 {% csrf_token %}
                 <input type="submit" value="remove from cart">
             </form>
         </div>
-        <p><a href="{% url 'product_detail' product.pk %}">{{ product.product_pk.product_name }}</a></p>
+        <p><a href="{% url 'product_detail' product.product_pk.pk %}">{{ product.product_pk.product_name }}</a></p>
         <div class="product_info_small_font">
             <p>Price: {{ product.product_pk.price }} tg</p>
             <p>Count: {{ product.count }}</p>
