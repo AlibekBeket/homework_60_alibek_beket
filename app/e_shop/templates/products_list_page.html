@@ -9,7 +9,7 @@
 <a href="{% url 'product_cart_list' %}">Shopping Cart</a>
 {% endblock %}
 {% block content %}
-{% include 'partials/product_find.html' %}
+{% include 'partials/search.html' %}
 {% for product in products_list %}
 <div class="product_info">
     <img src="{{ product.product_image }}" alt="{{ product.product_name }} image">
