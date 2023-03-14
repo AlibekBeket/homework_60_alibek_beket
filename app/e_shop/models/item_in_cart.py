@@ -16,6 +16,5 @@ class ItemInCart(models.Model):
         verbose_name="Количество"
     )
 
-
     def __str__(self):
         return f"{self.product_pk} - {self.count}"

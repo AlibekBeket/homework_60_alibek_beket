@@ -33,9 +33,9 @@ class Booking(models.Model):
         verbose_name="Дата и время создания"
     )
 
-
     def __str__(self):
         return f"{self.user_name} - {self.address}"
+
 
 class Count(models.Model):
     product_pk = models.ForeignKey(
