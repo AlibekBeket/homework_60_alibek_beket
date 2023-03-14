@@ -65,4 +65,5 @@ class BookingAddView(TemplateView):
         for product in product_in_cart:
             booking_many_to_many = Count(product_pk=product.product_pk, booking_pk=booking, count=product.count)
             booking_many_to_many.save()
+            product.delete()
         return redirect('products_list')

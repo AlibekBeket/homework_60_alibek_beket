@@ -35,7 +35,7 @@ class BookingAdmin(admin.ModelAdmin):
     search_fields = ("id", "user_name", "product_pk", "address", "phone_number")
     fields = ("user_name", "phone_number", "address", "created_at")
     readonly_fields = ("id", "created_at")
-    ordering = ('created_at',)
+    ordering = ('-created_at',)
 
 
 admin.site.register(Booking, BookingAdmin)
